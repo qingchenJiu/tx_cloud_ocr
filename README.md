@@ -3,13 +3,13 @@
 
 ## Getting Started
 ```
-TxCloudOcrVerifyResult? result = await TxCloudOcr.openCloudOcrService(params: TxCloudOcrParams(  
-   nonce: "",  
-   userId: "",  
-   keyLicence: "",  
-   appId: "",  
-   order: "",  
-   sign: ""  
+TxCloudOcrVerifyResult? result = await TxCloudOcr.openCloudOcrService(params: TxCloudOcrParams(
+   nonce: "",
+   userId: "",
+   keyLicence: "",
+   appId: "",
+   order: "",
+   sign: ""
 ));  
 debugPrint("识别结果：${result?.result} message：${result?.message}");
 ```

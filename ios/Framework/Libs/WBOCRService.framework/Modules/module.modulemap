@@ -1,0 +1,6 @@
+framework module WBOCRService {
+  umbrella header "WBOCRService.h"
+
+  export *
+  module * { export * }
+}

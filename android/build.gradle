@@ -1,0 +1,57 @@
+group 'com.example.tx_cloud_ocr'
+version '1.0'
+
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.0'
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        google()
+        mavenCentral()
+	flatDir {
+//	    dirs project(':tx_cloud_ocr').file('libs')
+        dirs 'libs'
+        }
+    }
+}
+
+apply plugin: 'com.android.library'
+android {
+    compileSdkVersion 31
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion 16
+	consumerProguardFiles 'webank-cloud-ocr-proguard-rules.pro'
+	ndk {
+          //设置支持的 so 库框架
+          abiFilters 'armeabi-v7a', 'armeabi', 'arm64-v8a'
+     }
+    }
+
+//    repositories {
+//        flatDir {
+//            dirs 'libs' //this way we can find the .aar file in libs folder
+//        }
+//    }
+}
+
+//添加依赖
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:support-v4:+'
+    implementation(name: 'WbCloudNormal-v5.1.0-f9eb035', ext: 'aar')
+    implementation(name: 'WbCloudOcrSdk-pro-v2.8.11-946c4da', ext: 'aar')
+}
